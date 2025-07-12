@@ -15,5 +15,11 @@ def index(request):
     paginator = Paginator(product_objects,4)
     page = request.GET.get('page')
     product_objects = paginator.get_page(page)
-    
+
     return render(request, 'shop/index.html', {'product_objects': product_objects})
+
+
+# detail page
+def detail(request, id):
+    product= Products.objects.get(id=id)
+    return render(request,'shop/detail.html',{'product':product})
